@@ -3,7 +3,17 @@ package main;
 import javax.swing.*;
 import java.awt.*;
 
-
+class ShapeDrawing extends JComponent{
+    public void paint(Graphics g){
+        Graphics2D g2 = (Graphics2D) g;
+        g.setColor(Color.GREEN);
+        int size = 10;
+        int x = 50;
+        int y = 50;
+        g.drawLine(x, y - size, x, y + size);
+        g.drawLine(x + size, y, x - size, y);
+    }
+}
 public class Main extends JFrame {
     public static void main(String[] args) {
         JFrame frame = new JFrame("NoScope Helper");
@@ -12,7 +22,7 @@ public class Main extends JFrame {
         frame.setBackground(new Color(1.0f,1.0f,1.0f,0f));
 
         // Crosshair overlay
-        frame.add(new JLabel(new ImageIcon("res/crosshair.png")));
+        frame.getContentPane().add(new ShapeDrawing ());
 
         // Force on top and stop the window from being moved.
         frame.setAlwaysOnTop(true);
